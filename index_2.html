@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Personal Webpage</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  <link rel="shortcut icon" href="assets/icons/computer-3.png" type="image/png">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/win95.css">
+  <link rel="stylesheet" type="text/css" href="assets/clippy/clippy.css" media="all">
+
+  <style>
+    body {
+      background: #008080;
+      font-family: "MS Sans Serif", Arial, sans-serif;
+      font-size: 14px;
+    }
+    body.bg-cloud {
+      background-image: url('assets/clouds2.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    html { scroll-behavior: smooth; }
+
+    /* ── Win95 flat button-strip navbar ── */
+    .navbar-win95 {
+      background: #c0c0c0;
+      border-top:    2px solid #ffffff;
+      border-left:   2px solid #ffffff;
+      border-right:  2px solid #404040;
+      border-bottom: 2px solid #404040;
+      padding: 3px 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-win95 a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #c0c0c0;
+      color: #000;
+      text-decoration: none;
+      padding: 3px 10px;
+      font-family: "MS Sans Serif", Arial, sans-serif;
+      font-size: 13px;
+      border-top:    2px solid #ffffff;
+      border-left:   2px solid #ffffff;
+      border-right:  2px solid #404040;
+      border-bottom: 2px solid #404040;
+    }
+    .navbar-win95 a:hover,
+    .navbar-win95 a.active {
+      border-top:    2px solid #404040;
+      border-left:   2px solid #404040;
+      border-right:  2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      color: #000;
+      text-decoration: none;
+    }
+    .navbar-win95 img { width: 14px; height: 14px; image-rendering: pixelated; }
+
+    /* ── Win95 window card ── */
+    .win-window {
+      background: #c0c0c0;
+      border-top:    2px solid #ffffff;
+      border-left:   2px solid #ffffff;
+      border-right:  2px solid #404040;
+      border-bottom: 2px solid #404040;
+      margin-bottom: 1.25rem;
+    }
+    .win-titlebar {
+      background: linear-gradient(to right, #000080, #1084d0);
+      color: #fff;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 3px 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      user-select: none;
+    }
+    .win-titlebar img { width: 16px; height: 16px; image-rendering: pixelated; }
+    .win-titlebar-buttons { margin-left: auto; display: flex; gap: 2px; }
+    .win-titlebar-btn {
+      width: 16px; height: 14px;
+      background: #c0c0c0;
+      border-top:    1px solid #ffffff;
+      border-left:   1px solid #ffffff;
+      border-right:  1px solid #404040;
+      border-bottom: 1px solid #404040;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #000;
+      cursor: default;
+    }
+    .win-body { padding: 10px 12px; }
+
+    /* ── Anchor offset for sticky nav ── */
+    .anchor-offset { padding-top: 56px; margin-top: -56px; }
+    .section { padding: 1rem 0; }
+
+    /* ── Avatar box ── */
+    .avatar-box {
+      width: 140px; height: 140px;
+      background: #c0c0c0;
+      border-top:    2px solid #404040;
+      border-left:   2px solid #404040;
+      border-right:  2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      margin: 0 auto 8px;
+    }
+
+    /* ── Win95 button ── */
+    .btn-win95 {
+      background: #c0c0c0;
+      color: #000;
+      border-top:    2px solid #ffffff;
+      border-left:   2px solid #ffffff;
+      border-right:  2px solid #404040;
+      border-bottom: 2px solid #404040;
+      padding: 3px 10px;
+      font-family: "MS Sans Serif", Arial, sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-right: 3px;
+      margin-bottom: 3px;
+    }
+    .btn-win95 img { width: 14px; height: 14px; image-rendering: pixelated; }
+    .btn-win95:hover { color: #000; text-decoration: none; }
+    .btn-win95:active {
+      border-top:    2px solid #404040;
+      border-left:   2px solid #404040;
+      border-right:  2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    /* ── Win95 text inputs ── */
+    .input-win95 {
+      background: #fff;
+      border-top:    2px solid #404040;
+      border-left:   2px solid #404040;
+      border-right:  2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      padding: 3px 5px;
+      font-family: "MS Sans Serif", Arial, sans-serif;
+      font-size: 13px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── Win95 horizontal rule ── */
+    .win-hr {
+      border: none;
+      border-top: 2px solid #808080;
+      border-bottom: 1px solid #ffffff;
+      margin: 8px 0;
+    }
+
+    /* ── Publication items ── */
+    .pub-item {
+      border-top:    1px solid #ffffff;
+      border-left:   1px solid #ffffff;
+      border-right:  1px solid #404040;
+      border-bottom: 1px solid #404040;
+      background: #d4d0c8;
+      padding: 6px 8px;
+      margin-bottom: 5px;
+    }
+    .pub-title { font-weight: bold; font-size: 13px; }
+    .pub-meta  { font-size: 11px; color: #444; margin-bottom: 4px; }
+    .pub-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 1px 6px;
+      margin-right: 3px;
+      background: #c0c0c0;
+      border-top:    1px solid #ffffff;
+      border-left:   1px solid #ffffff;
+      border-right:  1px solid #404040;
+      border-bottom: 1px solid #404040;
+      cursor: pointer;
+    }
+
+    /* ── CV table ── */
+    .cv-year { color: #000080; font-weight: bold; width: 75px; font-size: 12px; }
+    .cv-table td { font-size: 13px; padding: 3px 6px; vertical-align: top; }
+
+    /* ── Course windows ── */
+    .course-win {
+      background: #c0c0c0;
+      border-top:    2px solid #ffffff;
+      border-left:   2px solid #ffffff;
+      border-right:  2px solid #404040;
+      border-bottom: 2px solid #404040;
+      margin-bottom: 10px;
+    }
+    .course-header {
+      background: #000080;
+      color: #fff;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .course-body { padding: 8px 10px; font-size: 12px; }
+
+    /* ── Taskbar ── */
+    .taskbar-95 {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      padding: 3px 6px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      z-index: 2000;
+    }
+    .taskbar-95 .start-btn {
+      background: #c0c0c0;
+      border-top:    2px solid #ffffff;
+      border-left:   2px solid #ffffff;
+      border-right:  2px solid #404040;
+      border-bottom: 2px solid #404040;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 2px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #000;
+    }
+    .taskbar-95 .start-btn:hover { text-decoration: none; color: #000; }
+    .taskbar-95 .start-btn img { width: 14px; height: 14px; image-rendering: pixelated; }
+    .taskbar-95 .bar-divider {
+      width: 2px; height: 20px;
+      background: #808080;
+      border-right: 1px solid #fff;
+      margin: 0 2px;
+    }
+    .taskbar-95 .tray {
+      margin-left: auto;
+      border-top:    1px solid #808080;
+      border-left:   1px solid #808080;
+      border-right:  1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
+      padding: 2px 8px;
+      font-size: 12px;
+    }
+
+    .page-bottom-pad { padding-bottom: 52px; }
+
+    /* ── Page title ── */
+    .page-title {
+      text-align: center;
+      padding: 18px 0 8px;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    .page-subtitle { text-align: center; font-size: 13px; margin-bottom: 4px; }
+  </style>
+</head>
+
+<body class="bg-cloud">
+
+<!-- ══ NAVBAR ══ -->
+<div class="navbar-win95">
+  <a href="#about">    <img src="assets/icons/computer-3.png"       alt=""> Home</a>
+  <a href="#research"> <img src="assets/icons/help_book_cool-1.png" alt=""> Research</a>
+  <a href="#cv">       <img src="assets/icons/briefcase-4.png"      alt=""> CV</a>
+  <a href="#teaching"> <img src="assets/icons/calendar-1.png"       alt=""> Teaching</a>
+  <a href="#contact">  <img src="assets/icons/envelope_closed-1.png" alt=""> Contact</a>
+</div>
+
+
+<!-- ══ PAGE TITLE ══ -->
+<div class="page-title">Dr. Your Name — Academic Homepage</div>
+<div class="page-subtitle">Researcher &bull; Teacher &bull; [Your Field]</div>
+
+
+<!-- ══ ABOUT ══ -->
+<div id="about" class="anchor-offset"></div>
+<div class="container section">
+  <div class="row">
+
+    <div class="col-md-4 mb-3 text-center">
+      <div class="win-window">
+        <div class="win-titlebar">
+          <img src="assets/icons/computer-3.png" alt=""> photo.jpg
+          <div class="win-titlebar-buttons">
+            <span class="win-titlebar-btn">_</span>
+            <span class="win-titlebar-btn">□</span>
+            <span class="win-titlebar-btn">✕</span>
+          </div>
+        </div>
+        <div class="win-body text-center">
+          <div class="avatar-box">🎓</div>
+          <small style="font-size:11px;">[ replace with your photo ]</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 mb-3">
+      <div class="win-window">
+        <div class="win-titlebar">
+          <img src="assets/icons/note-0.png" alt=""> About Me
+          <div class="win-titlebar-buttons">
+            <span class="win-titlebar-btn">_</span>
+            <span class="win-titlebar-btn">□</span>
+            <span class="win-titlebar-btn">✕</span>
+          </div>
+        </div>
+        <div class="win-body">
+          <table style="font-size:13px; margin-bottom:8px; width:100%;">
+            <tr><td style="width:110px; color:#000080;"><strong>Name:</strong></td>       <td>Dr. Your Name</td></tr>
+            <tr><td><strong>Position:</strong></td>  <td>Assistant Professor, Dept. of [Field]</td></tr>
+            <tr><td><strong>Institution:</strong></td><td>University Name</td></tr>
+            <tr><td><strong>Email:</strong></td>     <td>yourname@university.edu</td></tr>
+          </table>
+          <hr class="win-hr">
+          <p style="font-size:13px; margin-bottom:10px;">
+            Welcome to my academic homepage. I am a researcher working on [your research area].
+            My work focuses on [brief description]. I am passionate about [teaching / collaboration / etc.].
+          </p>
+          <a href="#contact"  class="btn-win95"><img src="assets/icons/envelope_closed-1.png" alt=""> Email me</a>
+          <a href="#cv"       class="btn-win95"><img src="assets/icons/briefcase-4.png"       alt=""> View CV</a>
+          <a href="#research" class="btn-win95"><img src="assets/icons/help_book_cool-1.png"  alt=""> Research</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══ RESEARCH ══ -->
+<div id="research" class="anchor-offset"></div>
+<div class="container section">
+  <div class="win-window">
+    <div class="win-titlebar">
+      <img src="assets/icons/help_book_cool-1.png" alt=""> Research &amp; Publications
+      <div class="win-titlebar-buttons">
+        <span class="win-titlebar-btn">_</span>
+        <span class="win-titlebar-btn">□</span>
+        <span class="win-titlebar-btn">✕</span>
+      </div>
+    </div>
+    <div class="win-body">
+      <p style="font-size:13px;">
+        My research sits at the intersection of [Area A] and [Area B].
+        Current projects include [Project 1] and [Project 2].
+      </p>
+      <hr class="win-hr">
+      <strong style="font-size:13px;">Journal Articles</strong>
+      <div style="margin-top:6px;">
+        <div class="pub-item">
+          <div class="pub-title">Title of Your Most Recent Paper</div>
+          <div class="pub-meta">Your Name, Co-Author &mdash; <em>Journal of Something Important</em>, 2024</div>
+          <span class="pub-badge">PDF</span><span class="pub-badge">DOI</span><span class="pub-badge">Code</span>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">Another Publication Title Goes Here</div>
+          <div class="pub-meta">Your Name &mdash; <em>Proceedings of the Annual Conference</em>, 2023</div>
+          <span class="pub-badge">PDF</span><span class="pub-badge">Slides</span>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">Earlier Work: A Study in [Topic]</div>
+          <div class="pub-meta">Your Name, Advisor Name &mdash; <em>Workshop on XYZ</em>, 2022</div>
+          <span class="pub-badge">PDF</span>
+        </div>
+      </div>
+      <hr class="win-hr">
+      <strong style="font-size:13px;">Working Papers</strong>
+      <div style="margin-top:6px;">
+        <div class="pub-item">
+          <div class="pub-title">Work-in-Progress Paper Title</div>
+          <div class="pub-meta">Your Name &mdash; Under review at <em>Target Journal</em></div>
+          <span class="pub-badge">Draft</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ CV ══ -->
+<div id="cv" class="anchor-offset"></div>
+<div class="container section">
+  <div class="win-window">
+    <div class="win-titlebar">
+      <img src="assets/icons/briefcase-4.png" alt=""> Curriculum Vitae
+      <div class="win-titlebar-buttons">
+        <span class="win-titlebar-btn">_</span>
+        <span class="win-titlebar-btn">□</span>
+        <span class="win-titlebar-btn">✕</span>
+      </div>
+    </div>
+    <div class="win-body">
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <strong style="font-size:13px;">Academic Positions</strong>
+        <a href="cv.pdf" class="btn-win95" style="font-size:12px;">
+          <img src="assets/icons/directory_folder_options-5.png" alt=""> Download Full CV
+        </a>
+      </div>
+      <table class="cv-table" style="width:100%;">
+        <tr><td class="cv-year">2022 –</td>  <td><strong>Assistant Professor</strong>, Department of X, University Name</td></tr>
+        <tr><td class="cv-year">2020–22</td>  <td><strong>Postdoctoral Fellow</strong>, Institute of Y, Another University</td></tr>
+      </table>
+      <hr class="win-hr">
+
+      <strong style="font-size:13px;">Education</strong>
+      <table class="cv-table" style="width:100%; margin-top:4px;">
+        <tr><td class="cv-year">2020</td><td><strong>PhD</strong> in [Field] &mdash; University Name</td></tr>
+        <tr><td class="cv-year">2015</td><td><strong>MSc</strong> in [Field] &mdash; University Name</td></tr>
+        <tr><td class="cv-year">2013</td><td><strong>BSc</strong> in [Field] &mdash; University Name</td></tr>
+      </table>
+      <hr class="win-hr">
+
+      <strong style="font-size:13px;">Grants &amp; Awards</strong>
+      <table class="cv-table" style="width:100%; margin-top:4px;">
+        <tr><td class="cv-year">2023</td><td>Best Paper Award, Conference Name</td></tr>
+        <tr><td class="cv-year">2021</td><td>Research Grant, Funding Body ($XX,XXX)</td></tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ TEACHING ══ -->
+<div id="teaching" class="anchor-offset"></div>
+<div class="container section">
+  <div class="win-window">
+    <div class="win-titlebar">
+      <img src="assets/icons/calendar-1.png" alt=""> Teaching
+      <div class="win-titlebar-buttons">
+        <span class="win-titlebar-btn">_</span>
+        <span class="win-titlebar-btn">□</span>
+        <span class="win-titlebar-btn">✕</span>
+      </div>
+    </div>
+    <div class="win-body">
+      <p style="font-size:13px; margin-bottom:10px;">
+        I teach courses on [general area]. My goal is to [teaching philosophy in one sentence].
+      </p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="course-win">
+            <div class="course-header">Course Title 101</div>
+            <div class="course-body">
+              <div><strong>Level:</strong> Undergraduate &bull; Fall 2024</div>
+              <div style="margin:4px 0;">Introduction to [subject]. Topics: A, B, and C.</div>
+              <a href="#" class="btn-win95" style="font-size:11px;">Syllabus</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="course-win">
+            <div class="course-header">Advanced Topics 502</div>
+            <div class="course-body">
+              <div><strong>Level:</strong> Graduate &bull; Spring 2024</div>
+              <div style="margin:4px 0;">Deep dive into [topic]. Seminar with weekly readings.</div>
+              <a href="#" class="btn-win95" style="font-size:11px;">Syllabus</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="course-win">
+            <div class="course-header">Research Methods 301</div>
+            <div class="course-body">
+              <div><strong>Level:</strong> Undergraduate &bull; Fall 2023</div>
+              <div style="margin:4px 0;">Methods for conducting research in [field].</div>
+              <a href="#" class="btn-win95" style="font-size:11px;">Syllabus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ WINAMP ══ -->
+<div class="container section">
+  <div class="win-window">
+    <div class="win-titlebar">
+      <img src="assets/icons/cd_audio_cd_a-3.png" alt=""> Now Playing
+      <div class="win-titlebar-buttons">
+        <span class="win-titlebar-btn">_</span>
+        <span class="win-titlebar-btn">□</span>
+        <span class="win-titlebar-btn">✕</span>
+      </div>
+    </div>
+    <div class="win-body">
+      <div class="row">
+        <div class="col-md-6"><div id="app"></div></div>
+        <div class="col-md-6 my-auto" style="font-size:13px;">
+          Academic work is better with music. Load your own tracks using the Winamp player.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ CONTACT ══ -->
+<div id="contact" class="anchor-offset"></div>
+<div class="container section page-bottom-pad">
+  <div class="win-window">
+    <div class="win-titlebar">
+      <img src="assets/icons/envelope_closed-1.png" alt=""> Contact
+      <div class="win-titlebar-buttons">
+        <span class="win-titlebar-btn">_</span>
+        <span class="win-titlebar-btn">□</span>
+        <span class="win-titlebar-btn">✕</span>
+      </div>
+    </div>
+    <div class="win-body">
+      <div class="row">
+
+        <div class="col-md-5 mb-3">
+          <strong style="font-size:13px;">Get in Touch</strong>
+          <hr class="win-hr">
+          <table style="font-size:13px;">
+            <tr><td style="width:90px; color:#000080;"><strong>Email:</strong></td>  <td>yourname@university.edu</td></tr>
+            <tr><td><strong>Office:</strong></td> <td>Room 000, Building Name</td></tr>
+            <tr><td><strong>Hours:</strong></td>  <td>Mon &amp; Wed, 2–4 pm</td></tr>
+            <tr><td><strong>Phone:</strong></td>  <td>+1 (000) 000-0000</td></tr>
+          </table>
+          <div style="margin-top:10px;">
+            <a href="mailto:yourname@university.edu" class="btn-win95">
+              <img src="assets/icons/envelope_closed-1.png" alt=""> Email
+            </a>
+            <a href="https://scholar.google.com" class="btn-win95">
+              <img src="assets/icons/globe_map-4.png" alt=""> Scholar
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-7">
+          <strong style="font-size:13px;">Send a Message</strong>
+          <hr class="win-hr">
+          <div style="margin-bottom:6px;">
+            <label style="font-size:13px; display:block; margin-bottom:2px;">
+              <img src="assets/icons/envelope_closed-1.png" style="width:13px;" alt=""> Your e-mail:
+            </label>
+            <input type="email" class="input-win95" id="contactEmail" placeholder="you@example.com">
+          </div>
+          <div style="margin-bottom:6px;">
+            <label style="font-size:13px; display:block; margin-bottom:2px;">
+              <img src="assets/icons/user_world-0.png" style="width:13px;" alt=""> Your name:
+            </label>
+            <input type="text" class="input-win95" id="contactName" placeholder="Your name">
+          </div>
+          <div style="margin-bottom:8px;">
+            <label style="font-size:13px; display:block; margin-bottom:2px;">Message:</label>
+            <textarea class="input-win95" id="contactMessage" rows="4"></textarea>
+          </div>
+          <div style="margin-bottom:8px; font-size:13px;">
+            <label>
+              <input type="checkbox" id="spamCheck" style="margin-right:4px;">
+              I am not a spammer
+            </label>
+          </div>
+          <button class="btn-win95" onclick="handleContactSubmit()">
+            <img src="assets/icons/envelope_closed-1.png" style="width:13px;" alt=""> Send Message
+          </button>
+          <div id="contactSuccess" style="display:none; margin-top:6px; font-size:12px; color:green;">
+            ✔ Message sent! (connect a backend to make this functional)
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ TASKBAR ══ -->
+<div class="taskbar-95">
+  <a href="#about" class="start-btn">
+    <img src="assets/icons/users-1.png" alt=""> <strong>Start</strong>
+  </a>
+  <div class="bar-divider"></div>
+  <a href="#about"    class="start-btn" style="font-weight:normal; font-size:12px;"><img src="assets/icons/computer-3.png"        alt=""> About</a>
+  <a href="#research" class="start-btn" style="font-weight:normal; font-size:12px;"><img src="assets/icons/help_book_cool-1.png"  alt=""> Research</a>
+  <a href="#cv"       class="start-btn" style="font-weight:normal; font-size:12px;"><img src="assets/icons/briefcase-4.png"       alt=""> CV</a>
+  <a href="#teaching" class="start-btn" style="font-weight:normal; font-size:12px;"><img src="assets/icons/calendar-1.png"        alt=""> Teaching</a>
+  <a href="#contact"  class="start-btn" style="font-weight:normal; font-size:12px;"><img src="assets/icons/envelope_closed-1.png" alt=""> Contact</a>
+  <div class="tray" id="taskbarClock">00:00</div>
+</div>
+
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script src="assets/clippy/clippy.min.js"></script>
+<script src="https://unpkg.com/webamp@1.4.0/built/webamp.bundle.min.js"></script>
+
+<script>
+  // Webamp
+  const Webamp = window.Webamp;
+  if (Webamp && Webamp.browserIsSupported()) {
+    new Webamp({
+      initialTracks: [{
+        metaData: { artist: "Kevin MacLeod", title: "Study and Relax" },
+        url: "assets/Study-and-Relax.mp3",
+        duration: 223
+      }]
+    }).renderWhenReady(document.getElementById('app'));
+  }
+
+  // Clippy
+  if (typeof clippy !== 'undefined') {
+    clippy.load('Clippy', function(agent) {
+      agent.show();
+      agent.speak('Welcome to my academic homepage!');
+    });
+  }
+
+  // Clock
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('taskbarClock').textContent =
+      now.getHours().toString().padStart(2,'0') + ':' +
+      now.getMinutes().toString().padStart(2,'0');
+  }
+  updateClock();
+  setInterval(updateClock, 10000);
+
+  // Navbar active state on scroll
+  const sections = ['about','research','cv','teaching','contact'];
+  window.addEventListener('scroll', function() {
+    let current = 'about';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 80) current = id;
+    });
+    document.querySelectorAll('.navbar-win95 a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Contact submit (demo)
+  function handleContactSubmit() {
+    const email = document.getElementById('contactEmail').value;
+    const name  = document.getElementById('contactName').value;
+    const msg   = document.getElementById('contactMessage').value;
+    if (email && name && msg) {
+      document.getElementById('contactSuccess').style.display = 'block';
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+</script>
+
+</body>
+</html>
